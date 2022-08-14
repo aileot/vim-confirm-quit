@@ -34,7 +34,7 @@ repo = 'aileot/vim-confirm-quit'
 ## Usage
 
 ```vim
-" Set 0 to confirm any window to quit
-" (default: 1)
-let g:confirm_quit_only_last_window = 1
+" If it is 0, you'll be asked to confirm to quit only the last window; otherwise, any window.
+" (default: 0)
+let g:confirm_quit_any_window = 1
 ```
