@@ -37,4 +37,7 @@ repo = 'aileot/vim-confirm-quit'
 " If it is 0, you'll be asked to confirm to quit only the last window; otherwise, any window.
 " (default: 0)
 let g:confirm_quit_any_window = 1
+" If 0, the default answer to confirmation to quit is "No"; otherwise, "Yes".
+" (default: 1)
+let g:confirm_quit_yes_by_default = 0
 ```
