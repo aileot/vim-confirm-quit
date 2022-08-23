@@ -34,12 +34,18 @@ set cpo&vim
 
 let g:confirm_quit_any_window =
   \ get(g:, 'confirm_quit_any_window', 0)
+let g:confirm_quit_yes_by_default = get(g:, 'confirm_quit_yes_by_default', 1)
 
 function! s:confirm_quit() abort
+  let default_answer = 2
+  if g:confirm_quit_yes_by_default
+    let default_answer = 1
+  endif
   try
     if (g:confirm_quit_any_window
       \ || tabpagenr('$') == 1 && winnr('$') == 1)
-      \ && confirm('Do you really want to quit?', "&Yes\n&No", 2) != 1
+      \ && confirm('Do you really want to quit?', "&Yes\n&No", default_answer)
+      \   != 1
       split %:p
     endif
   catch /^Vim:Interrupt$/
