@@ -47,6 +47,7 @@ function! s:confirm_quit() abort
     if confirm('Do you really want to quit?', "&Yes\n&No", default_answer) == 1
       return
     endif
+    " A trick to keep the last buffer.
     split %:p
   catch /^Vim:Interrupt$/
     split %:p
