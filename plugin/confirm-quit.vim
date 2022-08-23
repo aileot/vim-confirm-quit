@@ -40,13 +40,15 @@ function! s:confirm_quit() abort
   if g:confirm_quit_yes_by_default
     let default_answer = 1
   endif
+  if !g:confirm_quit_any_window && (tabpagenr('$') != 1 || winnr('$') != 1)
+    return
+  endif
   try
-    if (g:confirm_quit_any_window
-      \ || tabpagenr('$') == 1 && winnr('$') == 1)
-      \ && confirm('Do you really want to quit?', "&Yes\n&No", default_answer)
-      \   != 1
-      split %:p
+    if confirm('Do you really want to quit?', "&Yes\n&No", default_answer) == 1
+      return
     endif
+    " A trick to keep the last buffer.
+    split %:p
   catch /^Vim:Interrupt$/
     split %:p
   endtry
