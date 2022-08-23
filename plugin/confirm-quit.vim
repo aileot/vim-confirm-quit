@@ -32,8 +32,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 "}}}
 
-let g:confirm_quit_any_window =
-  \ get(g:, 'confirm_quit_any_window', 0)
+let g:confirm_quit_any_window = get(g:, 'confirm_quit_any_window', 0)
 let g:confirm_quit_yes_by_default = get(g:, 'confirm_quit_yes_by_default', 1)
 
 function! s:confirm_quit() abort
